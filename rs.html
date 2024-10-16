@@ -374,19 +374,69 @@
     </div>
     <!-- End Access Modal -->
 
-    <div id="login-container">
-        <h1>Protected Page</h1>
-        <p>Enter the password to access the page:</p>
-        <input type="password" id="password" placeholder="Password">
-        <button onclick="checkPassword()">Submit</button>
-        <p id="message"></p>
+    <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="loginModalLabel">Accedi</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="modal-login-form">
+                        <div class="form-group">
+                            <label for="modal-username">Nome Utente</label>
+                            <input type="text" id="modal-username" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="modal-password">Password</label>
+                            <input type="password" id="modal-password" class="form-control" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Accedi</button>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <div id="protected-content" style="display:none;">
-        <h1>Welcome to the Protected Content!</h1>
-        <p>This is the hidden content that only appears after entering the correct password.</p>
-    </div>
 
+    <script>
+                $(document).ready(function() {
+            // Funzione per gestire l'accesso
+            function handleLogin(username, password) {
+                if (username === "admin" && password === "password") {
+                    $('#protected-content').show();
+                    $('#user-name').text(username);
+                    $('#login-container').hide(); // Nascondi il contenitore di login
+                    return true; // Accesso riuscito
+                } else {
+                    alert("Nome utente o password errati");
+                    return false; // Accesso fallito
+                }
+            }
+
+            // Gestione del login dal form principale
+            $('#login-form').on('submit', function(event) {
+                event.preventDefault();
+                var username = $('#username').val();
+                var password = $('#password').val();
+                handleLogin(username, password);
+            });
+
+            // Gestione del login dal modal
+            $('#modal-login-form').on('submit', function(event) {
+                event.preventDefault();
+                var username = $('#modal-username').val();
+                var password = $('#modal-password').val();
+                if (handleLogin(username, password)) {
+                    $('#login-modal').modal('hide'); // Chiudi il modal se l'accesso è riuscito
+                }
+            });
+        });
+    </script>
+</body>
+</html>
     <script src="/js-src/script.js"></script>
 </body>
 </html>
