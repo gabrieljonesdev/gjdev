@@ -310,70 +310,49 @@
       </div><!-- /sub-nav -->
     </header><!-- /header -->
 
-    <!-- Access Modal -->
-    <div class="modal fade" id="access-modal" tabindex="-1" role="dialog" aria-labelledby="accessModal"
-      aria-hidden="false">
-      <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content perfect-scrollbar">
-          <div class="modal-body">
-            <form class="access-main-wrapper">
-              <div class="container">
-                <div class="row variable-gutters mb-0 mb-lg-4 mb-xl-5">
-                  <div class="col">
-                    <h2 class="d-inline" id="accessModal">
-                      Accedi ai servizi
-                    </h2>
-                    <button type="button" class="close dismiss" data-dismiss="modal" aria-label="Chiudi">
-                      <svg class="svg-cancel-large">
-                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-cancel-large"></use>
-                      </svg>
-                    </button>
-                  </div>
-                </div>
-                <div class="row variable-gutters justify-content-center pt-4 pt-xl-5">
-                  <div class="col-lg-4">
-                    <p class="text-intro">Da qui puoi fare l'accesso nell'intera gjdev... Inserisci le tue credenziali <b>create da un amministratore gjdev</b> per fare l'accesso.</p>
-                    <div class="access-buttons">
-                      <a class="btn btn-petrol btn-block btn-lg rounded mb-3" href="https://www.gabrieljones.it/wp-login.php">Gabriel Jones Login (gabrieljones.it)</a>
-                      <a class="btn btn-petrol btn-block btn-lg rounded mb-3" href="https://f18.altervista.org/wp-login.php">18F login</a>
-                      <a class="btn btn-petrol btn-block btn-lg rounded mb-3" href="https://gjd.altervista.org">GJD login</a>
-                      <a class="btn btn-petrol btn-block btn-lg rounded mb-3" href="https://mail.ionos.it">Mail</a>
-                      <a class="btn btn-petrol btn-block btn-lg rounded mb-3" href="https://dev-gabriel-jones.pantheonsite.io/wp-login.php">Dev User GJD Login</a>
-
-
+    <main>
+        <div class="container">
+            <div id="login-container">
+                <h2>Accedi per visualizzare le risorse</h2>
+                <form id="login-form">
+                    <div class="form-group">
+                        <label for="username">Nome Utente</label>
+                        <input type="text" id="username" class="form-control" required>
                     </div>
-                  </div>
-                  <div class="col-lg-4 offset-lg-2 access-mobile-bg">
-                    <div class="access-login">
-                      <h3>Admin</h3>
-                      <p class="text-large">Entra con le tue credenziali date dal reparto dell'interno, per eseguire l'accesso al sito e al portale dedicato... Grazie a questo sito è possibile accedere all'amministrazione con le credenziali username.admin, a differenza dalle credenziali username.nome-del-reparto per fare l'accesso al proprio portale... </p>
-                      <div class="access-login-form">
-                        <div class="form-group">
-                          <label for="email">Email address</label>
-                          <input id="email" type="email" class="form-control" placeholder="La tua email">
-                        </div>
-                        <div class="form-group mb-3">
-                          <label for="password">Password</label>
-                          <input id="password" type="password" class="form-control" placeholder="Password">
-                        </div>
-                        <div class="row variable-gutters">
-                          <div class="col-lg-6 mb-4">
-                            <button type="submit" class="btn btn-white btn-block rounded" name="login"
-                              value="Accedi">Accedi</button>
-                          </div>
-                        </div>
-                      </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" class="form-control" required>
                     </div>
-                  </div>
-                </div>
-              </div>
-            </form>
-          </div>
+                    <button type="submit" class="btn btn-success">Accedi</button>
+                </form>
+            </div>
+
+            <div id="protected-content" style="display: none;">
+                <h3>Risorse Riservate</h3>
+                <p>Benvenuto, <span id="user-name"></span>! Ecco le tue risorse.</p>
+                <h4>Documentazione Comunale</h4>
+                <ul>
+                    <li><strong>Progetti in corso:</strong> Una panoramica dei progetti attualmente attivi nella tua comunità.</li>
+                    <li><strong>Report mensili:</strong> Analisi delle attività giovanili svolte ogni mese.</li>
+                    <li><strong>Iniziative future:</strong> Elenco delle proposte e eventi pianificati per il prossimo anno.</li>
+                </ul>
+                <h4>Documenti Importanti</h4>
+                <ul>
+                    <li><a href="#">Statuto Comunale (PDF)</a></li>
+                    <li><a href="#">Regolamento per le attività giovanili (PDF)</a></li>
+                    <li><a href="#">Rapporto annuale sulla partecipazione dei giovani (PDF)</a></li>
+                </ul>
+                <h4>Contatti Utili</h4>
+                <p>Per ulteriori informazioni, contatta il tuo referente comunale:</p>
+                <ul>
+                    <li>Email: <a href="mailto:referente@comune.it">referente@comune.it</a></li>
+                    <li>Telefono: +39 0123 456 789</li>
+                </ul>
+            </div>
         </div>
-      </div>
-    </div>
-    <!-- End Access Modal -->
+    </main>
 
+    <!-- Modals -->
     <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -399,7 +378,6 @@
             </div>
         </div>
     </div>
-
 
     <script>
                 $(document).ready(function() {
