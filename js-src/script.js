@@ -1,8 +1,8 @@
 function checkPassword() {
-    var password = document.getElementById("password").value;
+    var password = document.getElementById("password").value.trim();  // Rimuove spazi prima e dopo
     var message = document.getElementById("message");
 
-    if (password === "12345") {  // Set your desired password here
+    if (password === "12345") {  // Password corretta
         document.getElementById("login-container").style.display = "none";
         document.getElementById("protected-content").style.display = "block";
     } else {
