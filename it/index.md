@@ -14,7 +14,5 @@ order: 1
 
 {% include posts.html %}
 
-{% include home-gabby-content.html %}
-
 </main>
 
